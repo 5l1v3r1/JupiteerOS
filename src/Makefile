@@ -1,7 +1,7 @@
 OBJECTS = loader.o kernel_main.o
 CC = gcc
 CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
-         -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
+		 -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
 LDFLAGS = -T link.ld -melf_i386
 AS = nasm
 ASFLAGS = -f elf
@@ -24,6 +24,8 @@ run: iso
 %.o: %.s
 	$(AS) $(ASFLAGS) $< -o $@
 
-clean:
-	rm -rf *.o iso/boot/kernel.elf kernel.elf JupiteerOS.iso
+bochs:
+	bochs -f bochs.config -q 
 
+clean:
+	rm -rf *.o iso/boot/kernel.elf kernel.elf JupiteerOS.iso bochslog.txt

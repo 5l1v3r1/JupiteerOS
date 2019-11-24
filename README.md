@@ -22,3 +22,8 @@ make iso
 ```
 make run
 ```
+### Run in Bochs
+```
+make bochs
+```
+After running bochs, type "c" to start it.
