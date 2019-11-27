@@ -1,3 +1,4 @@
+#include "int_types.h"
 #define WHITE_COLOUR 0x7
 #define VGA_HEIGHT 80
 #define VGA_WIDTH 25
@@ -6,7 +7,7 @@
 
 void clear_screen(){
     char *vga = (char*)VGA_BUFFER;
-    int i=0;
+    uint16_t i=0;
     
     /* VGA mode 3 provides a text interface 80 characters 
     wide and 25 characters lines per screen. */   
@@ -18,7 +19,7 @@ void clear_screen(){
 
 void print(const char *string){
     char *vga = (char*)VGA_BUFFER;
-    int i=0,j=0;
+    uint16_t i=0,j=0;
 
     /*Text mode memory takes two bytes for every "character" on screen. 
     One is the ASCII code byte, the other the attribute byte.*/    
