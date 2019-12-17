@@ -12,7 +12,7 @@ In order to build JupiteerOS, make sure to have the following installed:
 
 ### Build
 ```
-make
+./build.sh
 ```
 ### Compile to ISO
 ```

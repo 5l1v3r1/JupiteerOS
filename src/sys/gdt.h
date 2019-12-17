@@ -1,4 +1,4 @@
-#include "int_types.h"
+#include "../include/int_types.h"
 
 /* GDT contains entries that provide information to the CPU about memory segments.
 GRUB sets a GDT up for operating system. But we don't know where that GDT is, or what's in it. 

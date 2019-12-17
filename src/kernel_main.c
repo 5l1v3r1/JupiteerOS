@@ -1,5 +1,5 @@
-#include "int_types.h"
-#include "gdt.h"
+#include "include/int_types.h"
+#include "sys/gdt.h"
 
 #define WHITE_COLOUR 0x7
 #define VGA_HEIGHT 80
