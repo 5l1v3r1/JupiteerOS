@@ -1,5 +1,6 @@
 #include "include/int_types.h"
 #include "sys/gdt.h"
+#include "sys/idt.h"
 
 #define WHITE_COLOUR 0x7
 #define VGA_HEIGHT 80
@@ -35,6 +36,7 @@ void print(const char *string){
 int main(){
     clear_screen();
     init_gdt();
+    init_idt();
     print("Welcome to JupiteerKernel!");
     return 0;
 }
