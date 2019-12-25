@@ -14,7 +14,7 @@
 struct idt_struct {
   uint16_t offset_low;
   uint16_t selector;
-  unsigned zero:4;
+  uint8_t zero:8;
   unsigned gate_type:4;
   unsigned s:1;
   unsigned dpl:2;
