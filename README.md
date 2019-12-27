@@ -1,3 +1,6 @@
+[![GitHub license](https://img.shields.io/github/license/jupiteer/JupiteerOS)](https://github.com/jupiteer/JupiteerOS/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/jupiteer/JupiteerOS)](https://github.com/jupiteer/JupiteerOS/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/jupiteer/JupiteerOS)](https://github.com/jupiteer/JupiteerOS/network)
 # JupiteerOS
 Experimental Operating System
 
@@ -27,3 +30,11 @@ make run
 make bochs
 ```
 After running bochs, type "c" to start it.
+
+### V0.1
+* GRUB bootloader
+* Global and Interrupt Descriptor Table
+* ISR handler
+
+### References
+* https://wiki.osdev.org/
