@@ -36,5 +36,7 @@ After running bochs, type "c" to start it.
 * Global and Interrupt Descriptor Table
 * ISR handler
 
+  Live test:https://www.youtube.com/watch?v=uwXuIsBbxJ0
+
 ### References
 * https://wiki.osdev.org/
