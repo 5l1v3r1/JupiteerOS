@@ -21,29 +21,30 @@ void init_idt(){
   
   // ISRs are configured through the Interrupt Descriptor Table.
 
-              /* Interrupt Service Routines */
-  /* Exception No #   Description               Error Code
-      0   Division By Zero Exception              No
-      1   Debug Exception                         No
-      2   Non Maskable Interrupt Exception        No
-      3   Breakpoint Exception                    No
-      4   Into Detected Overflow Exception        No
-      5   Out of Bounds Exception                 No
-      6   Invalid Opcode Exception                No
-      7   No Coprocessor Exception                No
-      8   Double Fault Exception                  Yes
-      9   Coprocessor Segment Overrun Exception   No
-      10  Bad TSS Exception                       Yes
-      11  Segment Not Present Exception           Yes
-      12  Stack Fault Exception                   Yes
-      13  General Protection Fault Exception      Yes
-      14  Page Fault Exception                    Yes
-      15  Unknown Interrupt Exception             No
-      16  Coprocessor Fault Exception             No
-      17  Alignment Check Exception               No
-      18  Machine Check Exception                 No
-      19 to 31  Reserved Exceptions               No
-      32 to 255 Free for use                      No*/
+            /* Interrupt Service Routines */
+  /*
+  No #            Description            Error Code
+  0   Division By Zero Exception              No
+  1   Debug Exception                         No
+  2   Non Maskable Interrupt Exception        No
+  3   Breakpoint Exception                    No
+  4   Into Detected Overflow Exception        No
+  5   Out of Bounds Exception                 No
+  6   Invalid Opcode Exception                No
+  7   No Coprocessor Exception                No
+  8   Double Fault Exception                  Yes
+  9   Coprocessor Segment Overrun Exception   No
+  10  Bad TSS Exception                       Yes
+  11  Segment Not Present Exception           Yes
+  12  Stack Fault Exception                   Yes
+  13  General Protection Fault Exception      Yes
+  14  Page Fault Exception                    Yes
+  15  Unknown Interrupt Exception             No
+  16  Coprocessor Fault Exception             No
+  17  Alignment Check Exception               No
+  18  Machine Check Exception                 No
+  19 to 31  Reserved Exceptions               No
+  32 to 255 Free for use                      No*/
 
   /*For the definitive guide on interrupts, 
     please read the Intel x86/x64 Architecture Manual.*/
@@ -83,6 +84,23 @@ void init_idt(){
   set_gate(29, isr29, 0x08, 0xE);
   set_gate(30, isr30, 0x08, 0xE);
   set_gate(31, isr31, 0x08, 0xE);
+
+  set_gate(32, irq0, 0x08, 0xE);
+  set_gate(33, irq1, 0x08, 0xE);
+  set_gate(34, irq2, 0x08, 0xE);
+  set_gate(35, irq3, 0x08, 0xE);
+  set_gate(36, irq4, 0x08, 0xE);
+  set_gate(37, irq5, 0x08, 0xE);
+  set_gate(38, irq6, 0x08, 0xE);
+  set_gate(39, irq7, 0x08, 0xE);
+  set_gate(40, irq8, 0x08, 0xE);
+  set_gate(41, irq9, 0x08, 0xE);
+  set_gate(42, irq10, 0x08, 0xE);
+  set_gate(43, irq11, 0x08, 0xE);
+  set_gate(44, irq12, 0x08, 0xE);
+  set_gate(45, irq13, 0x08, 0xE);
+  set_gate(46, irq14, 0x08, 0xE);
+  set_gate(47, irq15, 0x08, 0xE);
 
   idt_flush(&idt_ptr);
 }

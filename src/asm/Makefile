@@ -1,4 +1,4 @@
-OBJECTS = loader.o gdt_asm.o idt_asm.o interrupt.o
+OBJECTS = loader.o gdt_asm.o idt_asm.o interrupt.o io.o
 AS = nasm
 ASFLAGS = -f elf
 
