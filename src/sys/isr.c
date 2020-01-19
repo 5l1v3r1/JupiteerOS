@@ -2,6 +2,7 @@
 #include "../include/string.h"
 #include "../include/tty.h"
 #include "io.h"
+#include "pic.h"
 
 isr_t interrupt_handlers[256];
 

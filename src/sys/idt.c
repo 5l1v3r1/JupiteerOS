@@ -1,5 +1,6 @@
 #include "idt.h"
 #include "../include/string.h"
+#include "pic.h"
 
 void set_gate(
   int32_t num,
@@ -46,8 +47,8 @@ void init_idt(){
   19 to 31  Reserved Exceptions               No
   32 to 255 Free for use                      No*/
 
-  /*For the definitive guide on interrupts, 
-    please read the Intel x86/x64 Architecture Manual.*/
+  /* For the definitive guide on interrupts, 
+   * please read the Intel x86/x64 Architecture Manual.*/
 
   /* 32-bit interrupt gate */
   // Gate type: 0b1110=0xE 
@@ -84,6 +85,10 @@ void init_idt(){
   set_gate(29, isr29, 0x08, 0xE);
   set_gate(30, isr30, 0x08, 0xE);
   set_gate(31, isr31, 0x08, 0xE);
+
+  /* Master PIC start interrupt : 0x20
+   * Slave PIC start interrupt  : 0x28 */
+  PIC_remap(0x20, 0x28);
 
   set_gate(32, irq0, 0x08, 0xE);
   set_gate(33, irq1, 0x08, 0xE);
