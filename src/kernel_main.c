@@ -2,17 +2,21 @@
 #include "include/tty.h"
 #include "sys/gdt.h"
 #include "sys/idt.h"
+#include "driver/keyboard.h"
 
 int main(){
-    clear_screen();
-    init_gdt();
-    init_idt();
+  clear_screen();
+  init_gdt();
+  init_idt();
 
-    print("Welcome to JupiteerKernel!");
+  print("Welcome to JupiteerOS!");
 
-    // Interrupts
-    asm volatile ("int $0x3");
-    asm volatile ("int $0x2");
+  // Interrupts
+  asm volatile ("int $0x3");
+  asm volatile ("int $0x2");
 
-    return 0;
+  // Initialize keyboard
+  init_keyboard();
+
+  return 0;
 }

@@ -10,5 +10,5 @@ bochs:
 
 clean:
 	rm -rf *.o iso/boot/kernel.elf kernel.elf \
-		JupiteerOS.iso bochslog.txt sys/*.o asm/*.o include/*.o obj/
+		JupiteerOS.iso bochslog.txt sys/*.o asm/*.o include/*.o  driver/*.o obj/
 

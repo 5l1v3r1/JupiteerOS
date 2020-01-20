@@ -14,7 +14,7 @@ void isr_handler(registers_t regs){
 
 void irq_handler(registers_t regs){
 	/* If interrupt number > 40), we send a reset signal to the slave. 
-	In either case, we send one to the master also. */
+	 * In either case, we send one to the master also. */
 
 	if (regs.int_no >= 40){
 		outb(SLAVE_PIC_COMMAND, PIC_EOI);
@@ -27,4 +27,8 @@ void irq_handler(registers_t regs){
 		handler(regs);
 	}
 
+}
+
+void register_interrupt_handler(uint8_t n, isr_t handler) {
+  interrupt_handlers[n] = handler;
 }

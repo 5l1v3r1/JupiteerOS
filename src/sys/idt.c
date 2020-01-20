@@ -108,6 +108,8 @@ void init_idt(){
   set_gate(47, irq15, 0x08, 0xE);
 
   idt_flush(&idt_ptr);
+    // enable hardware interrupts
+  asm volatile ("sti");
 }
 
 void set_gate(int32_t num,void(*base),uint16_t sel,unsigned g_type){

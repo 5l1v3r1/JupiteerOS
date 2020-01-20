@@ -67,6 +67,11 @@ extern void isr30();
 extern void isr31();
 
 // Interrupt Requests
+
+/* Modern x86 systems have 2 PIC chips. 
+ * Each chip has a 8 input lines.*/
+
+// Master PIC receives IRQ0 to IRQ7 
 extern void irq0();
 extern void irq1();
 extern void irq2();
@@ -75,6 +80,8 @@ extern void irq4();
 extern void irq5();
 extern void irq6();
 extern void irq7();
+
+// Slave PIC receives IRQ8 to IRQ15 
 extern void irq8();
 extern void irq9();
 extern void irq10();
