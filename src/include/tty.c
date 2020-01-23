@@ -52,6 +52,12 @@ void color_print(const char* str,uint8_t col){
     print_char(str[i],col);
 }
 
+void back_space(){
+    term_ptr->col = term_ptr->col -1;
+    size_t index = (VGA_HEIGHT * term_ptr->row) + term_ptr->col;
+    VGA_BUFFER[index] = ((uint16_t)WHITE_COL << 8) | ' ';
+}
+
 void init_prompt(){
   new_line();
   color_print("jupiteer@jupiteer ",GREEN_COL);

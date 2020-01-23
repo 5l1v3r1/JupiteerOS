@@ -6,6 +6,7 @@
 #include "../include/int_types.h"
 
 extern uint8_t us_keyboard_map[128];
+int cmd_index = 0;
 
 void keyboard_handler(){
   uint8_t status;
@@ -15,18 +16,34 @@ void keyboard_handler(){
   status = inb(0x64);
 
   // Check the data, is it empty?
-  if (status & 0x01){
+  if(status & 0x01){
     // 0x60 : Keyboard data port
     scan_code = inb(0x60);
 
-    if(scan_code <0){
+    if(scan_code < 0){
       return;
     }
+
+    // Backspace Key
+    if(scan_code == 0x0E){
+      if(cmd_index <= 0){
+        // if we're at the first character of the command
+        // then avoid backspace to not to delete prompt.
+        return;
+      }
+      cmd_index--;
+      back_space();
+      return;
+    }
+
+    // 0x1C : Enter Key
     if(scan_code == 0x1C){
       init_prompt();
+      cmd_index = 0;
       return;
     }
     print_char(us_keyboard_map[(uint8_t)scan_code],WHITE_COL);
+    cmd_index += 1;
   }
   
 }

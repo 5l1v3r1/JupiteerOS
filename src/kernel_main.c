@@ -9,7 +9,7 @@ int main(){
   init_gdt();
   init_idt();
 
-  print("Welcome to JupiteerOS!");
+  print("\nWelcome to JupiteerOS!");
 
   // Interrupts
   asm volatile ("int $0x3");
