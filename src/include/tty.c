@@ -16,18 +16,21 @@ void clear_screen(){
       print_char(' ', WHITE_COL);
 }
 
-void new_line(){
-  term_ptr->col = 0;
-  term_ptr->row++;
-}
-
 void reset_screen(){
   term_ptr->col = 0;
   term_ptr->row = 0;
 }
 
-void print_char(char c,uint8_t col){
+void new_line(){
+  if(term_ptr->row >= VGA_WIDTH){
+    reset_screen();
+    clear_screen();
+  }
+  term_ptr->col = 0;
+  term_ptr->row++;
+}
 
+void print_char(char c,uint8_t col){
   // New line character
   if (c == '\n'){
     new_line();
@@ -37,14 +40,6 @@ void print_char(char c,uint8_t col){
     VGA_BUFFER[index] = ((uint16_t)col << 8) | c;
     term_ptr->col++;
   }
-
-  // New line
-  if(term_ptr->col >= VGA_HEIGHT)
-    new_line();
-
-  // Reset screen
-  if(term_ptr->row >= VGA_WIDTH)
-    reset_screen();
 }
  
 void print(const char* str){
