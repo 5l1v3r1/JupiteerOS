@@ -17,6 +17,8 @@ int main(){
 
   // Initialize keyboard
   init_keyboard();
+  // Initialize prompt
+  init_prompt();
 
   return 0;
 }

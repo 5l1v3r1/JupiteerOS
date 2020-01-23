@@ -15,13 +15,18 @@ void keyboard_handler(){
   status = inb(0x64);
 
   // Check the data, is it empty?
-  if (status & 0x01) {
+  if (status & 0x01){
     // 0x60 : Keyboard data port
     scan_code = inb(0x60);
 
-    char c = (us_keyboard_map[(uint8_t)scan_code]);
-    put_char(c);
-  
+    if(scan_code <0){
+      return;
+    }
+    if(scan_code == 0x1C){
+      init_prompt();
+      return;
+    }
+    print_char(us_keyboard_map[(uint8_t)scan_code],WHITE_COL);
   }
   
 }
