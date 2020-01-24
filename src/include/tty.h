@@ -15,6 +15,7 @@ void print(const char *string);
 void print_char(char c,uint8_t col);
 void init_prompt();
 void back_space();
+void print_time(char* sec);
 
 #define BLACK_COL         0
 #define BLUE_COL          1
