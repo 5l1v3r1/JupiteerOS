@@ -36,7 +36,6 @@ isr_common_stub:
   mov gs, ax
   popa                  ; Pops edi,esi,ebp,esp,ebx,edx,ecx,eax
   add esp, 8            ; Cleans up the pushed error code and pushed ISR number
-  sti                   ; re-enable hardware interrupts
   iret                  ; pops CS, EIP, EFLAGS, SS, and ESP
 
 ISR_NOERRCODE 0
@@ -102,9 +101,7 @@ irq_common_stub:
 
   popa                  ; Pops edi,esi,ebp,esp,ebx,edx,ecx,eax
   add esp, 8            ; Cleans up the pushed error code and pushed ISR number
-  sti
   iret                  ; pops CS, EIP, EFLAGS, SS, and ESP
-
 
 ;IRQ number,ISR number
 IRQ 0, 32

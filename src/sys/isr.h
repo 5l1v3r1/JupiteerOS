@@ -3,18 +3,18 @@
 
 #include "../include/int_types.h"
 
-typedef struct registers{
+typedef struct reg{
   // Data segment selector
   uint32_t ds;
   // Pushed by pusha.
-  uint32_t edi,esi,ebp,esp,ebx,edx,ecx,eax; 
+  uint32_t edi,esi,ebp,useless_value,ebx,edx,ecx,eax; 
   // Interrupt number and error code.
   uint32_t int_no,err_code;
   // Pushed by the processor automatically.
-  uint32_t eip,cs,eflags,useresp,ss; 
-} registers_t;
+  uint32_t eip,cs,eflags,esp,ss; 
+} reg_t;
 
-typedef void (*isr_t)(registers_t);
+typedef void (*isr_t)(reg_t);
 
 #define IRQ0 32
 #define IRQ1 33

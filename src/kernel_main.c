@@ -16,8 +16,6 @@ int main(){
   asm volatile ("int $0x3");
   asm volatile ("int $0x2");
 
-  clear_screen();
-
   // Initialize keyboard
   init_keyboard();
   // Initialize prompt

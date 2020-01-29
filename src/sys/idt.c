@@ -44,8 +44,10 @@ void init_idt(){
   16  Coprocessor Fault Exception             No
   17  Alignment Check Exception               No
   18  Machine Check Exception                 No
-  19 to 31  Reserved Exceptions               No
-  32 to 255 Free for use                      No*/
+  19  SIMD Floating-Point Exceptions          No
+  20  Virtualization Exceptions               No
+  21 to 31  Reserved Exceptions               No
+  32 to 255 Maskable Interrupts               No*/
 
   /* For the definitive guide on interrupts, 
    * please read the Intel x86/x64 Architecture Manual.*/
