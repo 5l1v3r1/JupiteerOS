@@ -31,6 +31,11 @@ make bochs
 ```
 After running bochs, type "c" to start it.
 
+### V0.11
+* Programmable Interrupt Controller 
+* Programmable Interval Timer
+* Keyboard Driver
+
 ### V0.1
 * GRUB bootloader
 * Global and Interrupt Descriptor Table
