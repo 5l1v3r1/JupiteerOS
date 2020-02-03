@@ -36,6 +36,8 @@ After running bochs, type "c" to start it.
 * Programmable Interval Timer
 * Keyboard Driver
 
+  Live Test: https://www.youtube.com/watch?v=e0YiMWGrxLo
+
 ### V0.1
 * GRUB bootloader
 * Global and Interrupt Descriptor Table
