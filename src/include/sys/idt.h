@@ -1,7 +1,7 @@
 #ifndef __IDT_H__
 #define __IDT_H__
 
-#include "../include/int_types.h"
+#include <libc/stdint.h>
 
 /*Interrupt Descriptor Table tells the 
   CPU where to find handlers for each interrupt.*/

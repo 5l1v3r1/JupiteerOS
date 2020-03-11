@@ -1,5 +1,5 @@
-#include "gdt.h"
-#include "../include/int_types.h"
+#include <libc/stdint.h>
+#include <sys/gdt.h>
 
 // to access ASM functions from C code
 extern void gdt_flush(uint32_t);

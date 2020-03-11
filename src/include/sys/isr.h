@@ -1,7 +1,7 @@
 #ifndef __ISR_H__
 #define __ISR_H__
 
-#include "../include/int_types.h"
+#include <libc/stdint.h>
 
 typedef struct reg{
   // Data segment selector

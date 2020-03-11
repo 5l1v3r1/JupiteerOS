@@ -1,20 +1,19 @@
-#include "include/int_types.h"
-#include "include/tty.h"
-#include "sys/gdt.h"
-#include "sys/idt.h"
-#include "driver/keyboard.h"
-#include "sys/timer.h"
+#include <drivers/keyboard.h>
+#include <kernel/tty.h>
+#include <libc/stdint.h>
+#include <sys/gdt.h>
+#include <sys/idt.h>
+#include <sys/timer.h>
 
-int main(){
+int main() {
   clear_screen();
   init_gdt();
   init_idt();
-
   print("\nWelcome to JupiteerOS!");
 
   // Interrupts
-  asm volatile ("int $0x3");
-  asm volatile ("int $0x2");
+  asm volatile("int $0x3");
+  asm volatile("int $0x2");
 
   // Initialize keyboard
   init_keyboard();

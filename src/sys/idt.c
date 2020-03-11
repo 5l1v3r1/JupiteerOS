@@ -1,6 +1,6 @@
-#include "idt.h"
-#include "../include/string.h"
-#include "pic.h"
+#include <libc/string.h>
+#include <sys/idt.h>
+#include <sys/pic.h>
 
 void set_gate(
   int32_t num,

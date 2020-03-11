@@ -1,8 +1,8 @@
-#include "timer.h"
-#include "isr.h"
-#include "io.h"
-#include "../include/tty.h"
-#include "../include/string.h"
+#include <kernel/tty.h>
+#include <libc/string.h>
+#include <sys/io.h>
+#include <sys/isr.h>
+#include <sys/timer.h>
 
 int timer_tick = 1000;
 int limit = 0;

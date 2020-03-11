@@ -1,7 +1,7 @@
-#include "int_types.h"
-#include "tty.h"
-#include "../sys/io.h"
-#include "string.h"
+#include <kernel/tty.h>
+#include <libc/stdint.h>
+#include <libc/string.h>
+#include <sys/io.h>
 
 // VGA text buffer is located at physical memory address 0xB8000.
 volatile uint16_t* VGA_BUFFER = (uint16_t*)0xB8000;

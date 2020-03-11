@@ -1,8 +1,8 @@
-#include "isr.h"
-#include "../include/string.h"
-#include "../include/tty.h"
-#include "io.h"
-#include "pic.h"
+#include <kernel/tty.h>
+#include <libc/string.h>
+#include <sys/io.h>
+#include <sys/isr.h>
+#include <sys/pic.h>
 
 isr_t interrupt_handlers[256];
 

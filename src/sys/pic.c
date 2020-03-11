@@ -1,6 +1,5 @@
-#include "../include/int_types.h"
-#include "pic.h"
-#include "io.h"
+#include <sys/io.h>
+#include <sys/pic.h>
 
 /* Forces the CPU to wait for an I/O operation to complete. 
  * only use this when there's nothing like a status register
