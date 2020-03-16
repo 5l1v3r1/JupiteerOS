@@ -56,6 +56,14 @@ int strlen(const char *s) {
   return i;
 }
 
+// compare two string
+int strcmp(const char *s1, const char *s2){
+  for(; *s1==*s2; s1++,s2++)
+    if(*s1 == '\0')
+      return 0;
+  return *s1 - *s2;
+}
+
 int printf(const char *format, ...){
   char buf[20],c,*s;
   int val;
