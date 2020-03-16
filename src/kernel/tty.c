@@ -49,13 +49,13 @@ void new_line(){
   term_ptr->row++;
 }
 
-void print_char(char c,uint8_t col){
+void print_char(char c){
   // New line character
   if (c == '\n')
     new_line();
   else{
     size_t index = (VGA_WIDTH * term_ptr->row) + term_ptr->col;
-    VGA_BUFFER[index] = ((uint16_t)col << 8) | c;
+    VGA_BUFFER[index] = ((uint16_t)WHITE_COL << 8) | c;
     term_ptr->col++;
     move_cursor(index);
   }
@@ -64,12 +64,24 @@ void print_char(char c,uint8_t col){
  
 void print(const char* str){
   for(size_t i=0; str[i] != '\0'; i++)
-    print_char(str[i],WHITE_COL);
+    print_char(str[i]);
 }
 
 void color_print(const char* str,uint8_t col){
-  for(size_t i=0; str[i] != '\0'; i++)
-    print_char(str[i],col);
+  
+  for(size_t i=0; str[i] != '\0'; i++){
+    char c = str[i];
+    // New line character
+    if (c == '\n')
+      new_line();
+    else{
+      size_t index = (VGA_WIDTH * term_ptr->row) + term_ptr->col;
+      VGA_BUFFER[index] = ((uint16_t)col << 8) | c;
+      term_ptr->col++;
+      move_cursor(index);
+    }
+  }
+
 }
 
 void back_space(){
@@ -88,5 +100,5 @@ void print_time(char* sec){
   reset_screen();
 
   for(int i = 0; i < strlen(sec); i++)
-    print_char(sec[i],WHITE_COL);
+    print_char(sec[i]);
 }

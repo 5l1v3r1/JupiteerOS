@@ -18,7 +18,7 @@ struct term_struct {
 
 void clear_screen();
 void print(const char *string);
-void print_char(char c, uint8_t col);
+void print_char(char c);
 void init_prompt();
 void back_space();
 void print_time(char *sec);

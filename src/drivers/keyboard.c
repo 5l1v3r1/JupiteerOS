@@ -42,7 +42,7 @@ void keyboard_handler() {
       cmd_index = 0;
       return;
     }
-    print_char(us_keyboard_map[(uint8_t)scan_code], WHITE_COL);
+    print_char(us_keyboard_map[(uint8_t)scan_code]);
     cmd_index += 1;
   }
 }
