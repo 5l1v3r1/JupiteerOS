@@ -1,4 +1,4 @@
-#include <kernel/tty.h>
+#include <drivers/screen.h>
 #include <libc/stdint.h>
 #include <libc/string.h>
 #include <sys/io.h>
