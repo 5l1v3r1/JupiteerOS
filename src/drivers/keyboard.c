@@ -4,9 +4,18 @@
 #include <libc/stdint.h>
 #include <sys/io.h>
 #include <sys/isr.h>
+#include <libc/string.h>
 
 extern uint8_t us_keyboard_map[128];
-int cmd_index = 0;
+#define BUFFER_SIZE 256
+int buffer_index = 0;
+char shell_buffer[BUFFER_SIZE]; 
+char temp[BUFFER_SIZE];
+
+void clear_buffer(){
+  for(int i = 0; i < BUFFER_SIZE; i++)
+    shell_buffer[i] = 0;
+}
 
 void keyboard_handler() {
   uint8_t status;
@@ -26,25 +35,39 @@ void keyboard_handler() {
 
     // Backspace Key
     if (scan_code == 0x0E) {
-      if (cmd_index <= 0) {
+      if (buffer_index <= 0) {
         // if we're at the first character of the command
         // then avoid backspace to not to delete prompt.
         return;
       }
-      cmd_index--;
+      buffer_index--;
+      shell_buffer[buffer_index] = '\0';
       back_space();
       return;
     }
 
     // 0x1C : Enter Key
-    if (scan_code == 0x1C) {
+    if (scan_code == 0x1C){
+      
+      if(!strcmp(shell_buffer, "help")){
+         printf("\nuname: Print system information");
+      }
+      else if(!strcmp(shell_buffer, "uname")){
+        printf("\nJupiteerOS");
+      }
+
       init_prompt();
-      cmd_index = 0;
+      buffer_index = 0;
+      clear_buffer();
       return;
     }
-    print_char(us_keyboard_map[(uint8_t)scan_code]);
-    cmd_index += 1;
+
+    char c = us_keyboard_map[(uint8_t)scan_code];
+    printf("%c",c);
+    shell_buffer[buffer_index] = c;
+    buffer_index += 1;
   }
+
 }
 
 void init_keyboard() { 
