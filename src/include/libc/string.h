@@ -6,5 +6,6 @@
 void *memset(void *s, int c, size_t n);
 char *itoa(int val, char *buf, int base);
 int strlen(const char *s);
+int printf(const char *format, ...);
 
 #endif // _STRING_H_ 

@@ -4,12 +4,15 @@
 #include <sys/gdt.h>
 #include <sys/idt.h>
 #include <sys/timer.h>
+#include <libc/string.h>
 
 int main() {
   clear_screen();
   init_gdt();
   init_idt();
-  print("\nWelcome to JupiteerOS!");
+
+  char str[23] = "Welcome to JupiteerOS!";
+  printf("%s",str);
 
   // Interrupts
   asm volatile("int $0x3");
@@ -19,8 +22,9 @@ int main() {
   init_keyboard();
   // Initialize prompt
   init_prompt();
-  // Sleep 20 second
-  sleep(20);
+  
+  /* Sleep 20 second
+   * sleep(20); */
 
   return 0;
 }

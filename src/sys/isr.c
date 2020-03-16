@@ -30,16 +30,18 @@ const char *interrupts[] = {
   "Virtualization Exceptions",
 };
 
-
 void isr_handler(reg_t regs){
-  print("\nReceived interrupt: ");
   int index = regs.int_no;
+  
+  printf("\nReceived interrupt: ");
+ 
   if(index>21 && index<31)
-    print("Reserved Exception");
+    printf("Reserved Exception");
   if(index>32 && index<256)
-    print("Maskable Interrupt");
+    printf("Maskable Interrupt");
   else
-    print(interrupts[index]);
+    printf(interrupts[index]);
+  
 }
 
 void irq_handler(reg_t regs){
