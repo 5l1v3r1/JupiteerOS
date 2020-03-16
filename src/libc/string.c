@@ -1,7 +1,7 @@
 #include <libc/stddef.h>
 #include <libc/stdint.h>
 #include <libc/stdarg.h>
-#include <kernel/tty.h>
+#include <drivers/screen.h>
 
 /* The memset() function fills the first n bytes of the
  * memory area pointed to by s with the constant byte c.*/

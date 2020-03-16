@@ -1,4 +1,3 @@
-#include <kernel/tty.h>
 #include <libc/string.h>
 #include <sys/io.h>
 #include <sys/isr.h>

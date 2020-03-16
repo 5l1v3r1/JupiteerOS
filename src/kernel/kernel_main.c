@@ -1,5 +1,6 @@
 #include <drivers/keyboard.h>
-#include <kernel/tty.h>
+#include <sys/shell.h>
+#include <drivers/screen.h>
 #include <libc/stdint.h>
 #include <sys/gdt.h>
 #include <sys/idt.h>

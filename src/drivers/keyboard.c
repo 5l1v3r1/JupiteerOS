@@ -1,6 +1,6 @@
 #include <drivers/keyboard.h>
 #include <drivers/us_keyboard_map.h>
-#include <kernel/tty.h>
+#include <sys/shell.h>
 #include <libc/stdint.h>
 #include <sys/io.h>
 #include <sys/isr.h>

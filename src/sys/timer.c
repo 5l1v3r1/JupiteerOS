@@ -1,4 +1,3 @@
-#include <kernel/tty.h>
 #include <libc/string.h>
 #include <sys/io.h>
 #include <sys/isr.h>
@@ -13,7 +12,7 @@ void timer(){
 
   if(temp < limit){
     second = itoa(temp, buf, 10);
-    print_time(second);
+    printf("%i",second);
   }
   timer_tick++;
 }

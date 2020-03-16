@@ -18,8 +18,10 @@ struct term_struct {
 
 void clear_screen();
 void print(const char *string);
+void color_print(const char* str,uint8_t col);
+void new_line();
+void reset_screen();
 void print_char(char c);
-void init_prompt();
 void back_space();
 void print_time(char *sec);
 
