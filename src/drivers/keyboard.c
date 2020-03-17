@@ -5,6 +5,7 @@
 #include <sys/io.h>
 #include <sys/isr.h>
 #include <libc/string.h>
+#include <drivers/screen.h>
 
 extern uint8_t us_keyboard_map[128];
 #define BUFFER_SIZE 256
@@ -55,7 +56,9 @@ void keyboard_handler() {
       else if(!strcmp(shell_buffer, "uname")){
         printf("\nJupiteerOS");
       }
-
+      else if(!strcmp(shell_buffer, "clear")){
+        clear_screen();
+      }
       init_prompt();
       buffer_index = 0;
       clear_buffer();
