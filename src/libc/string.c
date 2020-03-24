@@ -72,25 +72,28 @@ char *itoa(int val, char *buf, int base){
   return buf;
 }
 
-// Converts an unsigned integer to a string.
-char *uitoa(uint32_t val, char *buf, int base){
-  static char num[] = "0123456789abcdefghijklmnopqrstuvwxyz";
+ // Converts an unsigned integer to a string.
+char *uitoa(uint32_t val, char *buf, int radix) {
   uint32_t i = 0;
   uint32_t start = i;
-  
-  if(base == 16){
+  uint32_t temp = val;
+
+  if(radix == 16){
     buf[i++] = '0';
     buf[i++] = 'x';
     start = i;
   }
 
-  // Convert
   do{
-    buf[i++] = num[val % base];
-  }while(val /= base);
+    uint32_t a = temp % radix;
+    if(a < 10) 
+      buf[i++] = a + '0';
+    else 
+      buf[i++] = a + 'a' - 10;
+  }while(temp /= radix);
 
   char *s = buf + start;
-  char *e = buf;
+  char *e = buf + (i - 1);
 
   while(s < e){
     char t = *s;
