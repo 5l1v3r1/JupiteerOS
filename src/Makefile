@@ -3,7 +3,7 @@ HEADERS = $(shell find . -type f -name '*.h')
 ASM_FILES = $(shell find . -type f -name '*.s')
 OBJS = ${C_FILES:.c=.o} ${ASM_FILES:.s=.o} 
 
-CC = gcc
+CC = i686-elf-gcc
 O_LEVEL = 2
 
 # -m32: compile 32bit code.
@@ -19,7 +19,7 @@ O_LEVEL = 2
 # -c: compiles source files without linking.
 
 CFLAGS = -m32 -nostdlib -nostdinc -ffreestanding -fno-stack-protector \
-		 -Wall -Wextra -Werror -ggdb -c
+		 -Wall -Wextra -Werror -ggdb -c -std=gnu11
 
 QEMUFLAGS = -cdrom JupiteerOS.iso
 
