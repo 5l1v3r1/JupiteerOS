@@ -6,18 +6,27 @@
 #include <sys/idt.h>
 #include <sys/timer.h>
 #include <libc/string.h>
+#include <libc/stdlib.h>
 
 int main() {
   clear_screen();
   init_gdt();
   init_idt();
 
-  char str[23] = "Welcome to JupiteerOS!";
+  char str[24] = "Welcome to JupiteerOS!\n";
   printf("%s",str);
 
-  // Interrupts
-  asm volatile("int $0x3");
-  asm volatile("int $0x2");
+  /* Example interrupts
+   * asm volatile("int $0x3");
+   * asm volatile("int $0x2"); */
+
+  uint32_t a = malloc(8);
+  uint32_t b = malloc(8);
+  uint32_t c = malloc(8);
+
+  printf("a: %x\n", a);
+  printf("b: %x\n", b);
+  printf("c: %x", c);
 
   // Initialize keyboard
   init_keyboard();
