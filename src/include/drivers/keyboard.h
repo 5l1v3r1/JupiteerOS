@@ -1,7 +1,7 @@
-#ifndef _KEYBOARD_H_
-#define _KEYBOARD_H_
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
 
 void init_keyboard();
 void back_space();
 
-#endif // _KEYBOARD_H_
+#endif // KEYBOARD_H

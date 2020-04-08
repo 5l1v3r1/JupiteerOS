@@ -28,21 +28,21 @@ uint32_t placement_addr = (uint32_t)&end;
  * are all of the form 0xzzzzz000.*/
 
 uint32_t malloc_os(uint32_t size,int align,uint32_t *pyhs_addr){
-    /* 0xFFFFF000 is 11111111111111111111000000000000 in binary,so 
-     * this & operation keeps the upper 20 bits of placement_address.*/
-    if(align == 1 && (placement_addr & 0xFFFFF000)){
-      // align the placement addr
-      placement_addr &= 0xFFFFF000;
-      placement_addr += PAGE_SZ;
-    }
+  /* 0xFFFFF000 is 11111111111111111111000000000000 in binary,so 
+   * this & operation keeps the upper 20 bits of placement_address.*/
+  if(align == 1 && (placement_addr & 0xFFFFF000)){
+    // align the placement addr
+    placement_addr &= 0xFFFFF000;
+    placement_addr += PAGE_SZ;
+  }
 
-    // Save also the physical address 
-    if(pyhs_addr)
-      *pyhs_addr = placement_addr;
+  // Save also the physical address 
+  if(pyhs_addr)
+    *pyhs_addr = placement_addr;
 
-    uint32_t tmp = placement_addr;
-    placement_addr += size;
-    return tmp;
+  uint32_t tmp = placement_addr;
+  placement_addr += size;
+  return tmp;
 }
 
 // page aligned

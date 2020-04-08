@@ -1,17 +1,15 @@
-#ifndef _TTY_H_
-#define _TTY_H_
+#ifndef TTY_H
+#define TTY_H
 #include <libc/stdint.h>
 
-#define VGA_WIDTH  80
-#define VGA_HEIGHT 25
-
+#define VGA_WIDTH  				 80
+#define VGA_HEIGHT				 25
 #define VGA_COMMAND_PORT         0x3D4
 #define VGA_DATA_PORT            0x3D5
-
 #define VGA_HIGH_BYTE_COMMAND    14
 #define VGA_LOW_BYTE_COMMAND     15
 
-struct term_struct {
+struct term_struct{
   int col;
   int row;
 };
@@ -42,4 +40,4 @@ void print_time(char *sec);
 #define LIGHT_BROWN_COL     14
 #define WHITE_COL           15
 
-#endif // _TTY_H_
+#endif // TTY_H

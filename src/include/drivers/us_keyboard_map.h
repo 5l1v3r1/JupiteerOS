@@ -1,5 +1,5 @@
-#ifndef _KEYBOARD_MAP_H_
-#define _KEYBOARD_MAP_H_
+#ifndef KEYBOARD_MAP_H
+#define KEYBOARD_MAP_H
 
 #include <libc/stdint.h>
 
@@ -37,4 +37,4 @@ uint8_t us_keyboard_map[128] = {
   0, /* All other keys are undefined */
 };
 
-#endif // _KEYBOARD_MAP_H_
+#endif // KEYBOARD_MAP_H

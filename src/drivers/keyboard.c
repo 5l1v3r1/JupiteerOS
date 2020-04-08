@@ -1,14 +1,15 @@
 #include <drivers/keyboard.h>
 #include <drivers/us_keyboard_map.h>
+#include <drivers/screen.h>
 #include <sys/shell.h>
-#include <libc/stdint.h>
 #include <sys/io.h>
 #include <sys/isr.h>
+#include <libc/stdint.h>
 #include <libc/string.h>
-#include <drivers/screen.h>
 
 extern uint8_t us_keyboard_map[128];
 #define BUFFER_SIZE 256
+
 int buffer_index = 0;
 char shell_buffer[BUFFER_SIZE]; 
 char temp[BUFFER_SIZE];
@@ -18,7 +19,7 @@ void clear_buffer(){
     shell_buffer[i] = 0;
 }
 
-void keyboard_handler() {
+void keyboard_handler(){
   uint8_t status;
   char scan_code;
 
@@ -26,21 +27,20 @@ void keyboard_handler() {
   status = inb(0x64);
 
   // Check the data, is it empty?
-  if (status & 0x01) {
+  if(status & 0x01){
     // 0x60 : Keyboard data port
     scan_code = inb(0x60);
 
-    if (scan_code < 0) {
+    if(scan_code < 0)
       return;
-    }
-
+  
     // Backspace Key
-    if (scan_code == 0x0E) {
-      if (buffer_index <= 0) {
-        // if we're at the first character of the command
-        // then avoid backspace to not to delete prompt.
+    if(scan_code == 0x0E){
+      /* if we're at the first character of the command
+       * then avoid backspace to not to delete prompt.*/
+      if(buffer_index <= 0)
         return;
-      }
+      
       buffer_index--;
       shell_buffer[buffer_index] = '\0';
       back_space();
@@ -49,16 +49,12 @@ void keyboard_handler() {
 
     // 0x1C : Enter Key
     if (scan_code == 0x1C){
-      
-      if(!strcmp(shell_buffer, "help")){
-         printf("\nuname: Print system information");
-      }
-      else if(!strcmp(shell_buffer, "uname")){
+      if(!strcmp(shell_buffer, "help"))
+        printf("\nuname: Print system information");
+      else if(!strcmp(shell_buffer, "uname"))
         printf("\nJupiteerOS");
-      }
-      else if(!strcmp(shell_buffer, "clear")){
+      else if(!strcmp(shell_buffer, "clear"))
         clear_screen();
-      }
       init_prompt();
       buffer_index = 0;
       clear_buffer();
@@ -73,6 +69,6 @@ void keyboard_handler() {
 
 }
 
-void init_keyboard() { 
+void init_keyboard(){ 
   register_interrupt_handler(IRQ1, &keyboard_handler); 
 }

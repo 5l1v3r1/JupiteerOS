@@ -6,8 +6,7 @@ void set_gate(
   int32_t num,
   void(*base),
   uint16_t sel,
-  unsigned g_type
-  );
+  unsigned g_type);
 
 extern void idt_flush(idt_ptr_t*);
 

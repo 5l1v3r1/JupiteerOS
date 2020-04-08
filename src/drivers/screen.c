@@ -11,13 +11,14 @@ struct term_struct *term_ptr,term_t;
 /* To set the cursor at row one, column zero (position 80 = 0x0050), 
    one would use the following assembly code instructions:
 
-  out 0x3D4, 14      ; 14 tells the framebuffer to expect the highest 8 bits of the position
+  out 0x3D4, 14      ; 14 tells the framebuffer to expect the 
+                     ; highest 8 bits of the position
   out 0x3D5, 0x00    ; sending the highest 8 bits of 0x0050
-  out 0x3D4, 15      ; 15 tells the framebuffer to expect the lowest 8 bits of the position
-  out 0x3D5, 0x50    ; sending the lowest 8 bits of 0x0050
-*/
+  out 0x3D4, 15      ; 15 tells the framebuffer to expect the 
+                     ; lowest 8 bits of the position
+  out 0x3D5, 0x50    ; sending the lowest 8 bits of 0x0050 */
 
-void move_cursor(uint16_t pos) {
+void move_cursor(uint16_t pos){
   outb(VGA_COMMAND_PORT, VGA_HIGH_BYTE_COMMAND);
   outb(VGA_DATA_PORT, ((pos >> 8) & 0x00FF));
   outb(VGA_COMMAND_PORT, VGA_LOW_BYTE_COMMAND);
@@ -33,9 +34,8 @@ void clear_screen(){
   uint16_t i=0;    
   /* VGA mode 3 provides a text interface 80 characters 
    * wide and 25 characters lines per screen. */
-  while(i < VGA_HEIGHT*VGA_WIDTH*2){
+  while(i < VGA_HEIGHT*VGA_WIDTH*2)
     VGA_BUFFER[i++] = 0;
-  }
   reset_screen();
   move_cursor(0);
 }
@@ -59,7 +59,6 @@ void print_char(char c){
     term_ptr->col++;
     move_cursor(index);
   }
-
 }
  
 void print(const char* str){
@@ -68,7 +67,6 @@ void print(const char* str){
 }
 
 void color_print(const char* str,uint8_t col){
-  
   for(size_t i=0; str[i] != '\0'; i++){
     char c = str[i];
     // New line character
@@ -81,7 +79,6 @@ void color_print(const char* str,uint8_t col){
       move_cursor(index);
     }
   }
-
 }
 
 void back_space(){
