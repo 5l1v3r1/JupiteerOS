@@ -1,14 +1,14 @@
 #include <drivers/keyboard.h>
-#include <sys/shell.h>
 #include <drivers/screen.h>
-#include <libc/stdint.h>
+#include <sys/shell.h>
 #include <sys/gdt.h>
 #include <sys/idt.h>
 #include <sys/timer.h>
+#include <libc/stdint.h>
 #include <libc/string.h>
 #include <libc/stdlib.h>
 
-int main() {
+int kernel_main(){
   clear_screen();
   init_gdt();
   init_idt();
