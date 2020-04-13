@@ -1,10 +1,10 @@
-#ifndef __IDT_H__
-#define __IDT_H__
+#ifndef IDT_H
+#define IDT_H
 
 #include <libc/stdint.h>
 
-/*Interrupt Descriptor Table tells the 
-  CPU where to find handlers for each interrupt.*/
+/* Interrupt Descriptor Table tells the 
+ * CPU where to find handlers for each interrupt.*/
 
 /* Highest 32 bits
 |63       48| 47 |46 45| 44 |43     40|39  32|
@@ -14,7 +14,7 @@
 |31            16|15       0|
 |Segment Selector|Offset Low|*/
 
-struct idt_struct {
+struct idt_struct{
   uint16_t offset_low;
   uint16_t selector;
   uint8_t zero;
@@ -26,13 +26,13 @@ struct idt_struct {
 } __attribute__((packed));
 typedef struct idt_struct idt_entry_t;
 
-struct idt_ptr {
+struct idt_ptr{
   uint16_t limit;
   idt_entry_t *base;
 } __attribute__((packed));
 typedef struct idt_ptr idt_ptr_t;
 
-// Interrupt Service Routines
+/* Interrupt Service Routines */
 extern void isr0();
 extern void isr1();
 extern void isr2();
@@ -66,8 +66,7 @@ extern void isr29();
 extern void isr30();
 extern void isr31();
 
-// Interrupt Requests
-
+/* Interrupt Requests */
 /* Modern x86 systems have 2 PIC chips. 
  * Each chip has a 8 input lines.*/
 
@@ -93,4 +92,4 @@ extern void irq15();
 
 void init_idt();
 
-#endif // __IDT_H__
+#endif //IDT_H

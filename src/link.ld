@@ -4,30 +4,25 @@ ENTRY(loader)
 
 kernel_start = .;
 
-SECTIONS {
+SECTIONS{
 
-  .boot ALIGN (0x1000):
-  {
+  .boot ALIGN (0x1000):{
     *(.multiboot_header)
   }
 
-  .text ALIGN (0x1000):
-  {
+  .text ALIGN (0x1000):{
     *(.text)
   }
 
-  .rodata ALIGN (0x1000):
-  {
+  .rodata ALIGN (0x1000):{
     *(.rodaata*)
   }
 
-  .data ALIGN (0x1000):
-  {
+  .data ALIGN (0x1000):{
     *(.data)
   }
 
-  .bss ALIGN (0x1000):
-  {
+  .bss ALIGN (0x1000):{
     *(COMMON)
     *(.bss)
   }

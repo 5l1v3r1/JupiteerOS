@@ -3,4 +3,4 @@
 
 void init_prompt();
 
-#endif  // SHELL_H
+#endif // SHELL_H

@@ -31,10 +31,10 @@ void reset_screen(){
 }
 
 void clear_screen(){
-  uint16_t i=0;    
+  uint16_t i = 0;    
   /* VGA mode 3 provides a text interface 80 characters 
    * wide and 25 characters lines per screen. */
-  while(i < VGA_HEIGHT*VGA_WIDTH*2)
+  while(i < VGA_HEIGHT * VGA_WIDTH * 2)
     VGA_BUFFER[i++] = 0;
   reset_screen();
   move_cursor(0);
@@ -85,5 +85,5 @@ void back_space(){
   term_ptr->col = term_ptr->col - 1;
   size_t index = (VGA_WIDTH * term_ptr->row) + term_ptr->col;
   VGA_BUFFER[index] = ((uint16_t)WHITE_COL << 8) | ' ';
-  move_cursor(term_ptr->col + (term_ptr->row*VGA_WIDTH));
+  move_cursor(term_ptr->col + (term_ptr->row * VGA_WIDTH));
 }

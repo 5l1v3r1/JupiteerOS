@@ -1,7 +1,7 @@
 #include <libc/stdint.h>
 #include <sys/gdt.h>
 
-// to access ASM functions from C code
+// To access ASM functions from C code
 extern void gdt_flush(uint32_t);
 static void set_gate(int32_t, uint32_t, uint32_t, 
   uint8_t, uint8_t);

@@ -10,7 +10,8 @@ void set_gate(
 
 extern void idt_flush(idt_ptr_t*);
 
-idt_entry_t idt_entries[256]; // IDT contains 256 entries
+// IDT contains 256 entries
+idt_entry_t idt_entries[256];
 idt_ptr_t   idt_ptr;
 
 void init_idt(){
@@ -46,14 +47,11 @@ void init_idt(){
   19  SIMD Floating-Point Exceptions          No
   20  Virtualization Exceptions               No
   21 to 31  Reserved Exceptions               No
-  32 to 255 Maskable Interrupts               No*/
-
-  /* For the definitive guide on interrupts, 
-   * please read the Intel x86/x64 Architecture Manual.*/
+  32 to 255 Maskable Interrupts               No */
 
   /* 32-bit interrupt gate */
-  // Gate type: 0b1110=0xE 
-    
+  /* Selector: P=1, DPL=00, S=0 => 1000 = 0x08 
+   * interrupt gate Type: 1110 = 0xE */
   set_gate(0, isr0, 0x08, 0xE);
   set_gate(1, isr1, 0x08, 0xE);
   set_gate(2, isr2, 0x08, 0xE);
@@ -109,17 +107,20 @@ void init_idt(){
   set_gate(47, irq15, 0x08, 0xE);
 
   idt_flush(&idt_ptr);
-    // enable hardware interrupts
+  // Enable hardware interrupts
   asm volatile ("sti");
 }
 
 void set_gate(int32_t num,void(*base),uint16_t sel,unsigned g_type){
   idt_entries[num].offset_low = (uint32_t)base & 0xffff;
   idt_entries[num].selector = sel;
-  idt_entries[num].zero = 0;  // Always set to 0.
+  // Always set to 0.
+  idt_entries[num].zero = 0;
   idt_entries[num].gate_type = g_type;
-  idt_entries[num].s = 0;    // Set to 0 for interrupt and trap gates.
+  // Set to 0 for interrupt and trap gates.
+  idt_entries[num].s = 0;
   idt_entries[num].dpl = 0;
-  idt_entries[num].p = 1;   // Set to 1 for used interrupts. 
+  // Set to 1 for used interrupts. 
+  idt_entries[num].p = 1;
   idt_entries[num].offset_high = ((uint32_t)base >> 16) & 0xffff;
 }
