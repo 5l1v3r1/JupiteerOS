@@ -18,7 +18,7 @@ irq_common:
   ; Lower 16-bits of eax = ds.
   mov ax, ds
   ; save the data segment descriptor
-  push eax
+  push ds
 
   ; load the kernel data segment descriptor
   mov ax, 0x10  

@@ -31,7 +31,7 @@ typedef struct reg{
   uint32_t eip,cs,eflags,esp,ss; 
 }reg_t;
 
-typedef void (*isr_t)(reg_t);
+typedef void (*isr_t)(reg_t*);
 
 void register_interrupt_handler(uint8_t n, isr_t handler);
 
